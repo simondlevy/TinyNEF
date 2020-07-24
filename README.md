@@ -1,4 +1,5 @@
-This repository contains code for working with a simplified version of the Neural Engineering Framework (NEF). 
+This repository contains code for working with a simplified version of the 
+[Neural Engineering Framework](https://pdfs.semanticscholar.org/a053/a0ebd7ddc90254f07aa798e73161bf3b3edd.pdf) (NEF). 
 
 # Quickstart
 
