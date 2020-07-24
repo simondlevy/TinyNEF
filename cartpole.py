@@ -27,5 +27,4 @@ if __name__ == '__main__':
 
     best = problem.learn(10)
 
-    #print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
-
+    print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
