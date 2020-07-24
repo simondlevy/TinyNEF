@@ -13,16 +13,11 @@ import gym
 
 from sueap.elitist import Elitist
 
-class NefCartPole:
+class NefCartPole(NefGym):
 
     def __init__(self, neurons=10):
 
-        # Encoder
-        self.alpha = np.random.uniform(0, 100, neurons) # tuning parameter alpha
-        self.b = np.random.uniform(-20,+20, neurons)    # tuning parameter b
-        self.e = np.random.uniform(-1, +1, (4,neurons)) # encoder weights
-
-        self.neurons = neurons
+        NefGym.__init__(self, 4, neurons)
 
     def new_params(self):
 
