@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
 '''
-Abstract class for using TinyNEF and a genetic algorithm to solve problems in OpenAI gym
+Use the Neural Engineering framework to solve Pendulum via an elitist GA
 
 Copyright (C) 2020 Simon D. Levy
 
@@ -11,28 +12,20 @@ import gym
 
 from sueap.elitist import Elitist
 
-class NefGym:
+class NefPendulum:
 
-    def __init__(self, env_name, action_size, neurons=10):
-
-        env = gym.make(env_name)
+    def __init__(self, neurons=20):
 
         # Encoder
         self.alpha = np.random.uniform(0, 100, neurons) # tuning parameter alpha
         self.b = np.random.uniform(-20,+20, neurons)    # tuning parameter b
-        self.e = np.random.uniform(-1, +1, (env.observation_space.shape[0],neurons)) # encoder weights
+        self.e = np.random.uniform(-1, +1, (3,neurons)) # encoder weights
 
-        # Genetic Algorithm
-        self.ga = Elitist(self, 2000)
-
-        # Stuff for later
         self.neurons = neurons
-        self.action_size = action_size
-        self.env_name = env_name
 
     def new_params(self):
 
-       return np.random.uniform(-1, +1, (self.neurons,self.action_size)) # decoder weights
+       return np.random.uniform(-1, +1, (self.neurons,1)) # decoder weights
 
     def eval_params(self, params, episodes=10):
 
@@ -55,10 +48,10 @@ class NefGym:
 
         return d+noise_std*np.random.randn(*d.shape)
 
-    def run_episode(self, params, render=False):
+    def run_episode(self, params, env='Pendulum-v0', render=False):
 
         # Build env
-        env = gym.make(self.env_name)
+        env = gym.make(env)
         obs = env.reset()
 
         episode_reward, episode_steps = 0,0
@@ -93,11 +86,11 @@ class NefGym:
 
         d = params
 
-        return self.activation(np.tanh(np.dot(a, d)))
+        return np.clip(np.dot(a, d), -2, +2)
 
     def _curve(self, x):
 
-        return NefGym._G(self.alpha * np.dot(x, self.e) + self.b)
+        return NefPendulum._G(self.alpha * np.dot(x, self.e) + self.b)
 
     @staticmethod
     def _G(v):
@@ -110,6 +103,13 @@ class NefGym:
 
         return  g
 
-    def learn(self, ngen):
+if __name__ == '__main__':
 
-        return self.ga.run(ngen, max_fitness=2000)
+    problem = NefPendulum()
+
+    ga = Elitist(problem, 2048)
+
+    best = ga.run(80, max_fitness=2000)
+
+    print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
+
