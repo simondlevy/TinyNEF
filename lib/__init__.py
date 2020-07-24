@@ -10,3 +10,7 @@ class NefGym:
         self.e = np.random.uniform(-1, +1, (obs_size,neurons)) # encoder weights
 
         self.neurons = neurons
+
+    def new_params(self):
+
+       return np.random.uniform(-1, +1, (self.neurons,1)) # decoder weights

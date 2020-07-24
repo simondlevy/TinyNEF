@@ -19,10 +19,6 @@ class NefPendulum(NefGym):
 
         NefGym.__init__(self, 3, neurons)
 
-    def new_params(self):
-
-       return np.random.uniform(-1, +1, (self.neurons,1)) # decoder weights
-
     def eval_params(self, params, episodes=10):
 
         total_reward = 0
