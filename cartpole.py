@@ -25,6 +25,8 @@ if __name__ == '__main__':
 
     problem = NefCartPole()
 
+    print('Got reward %.3f in %d steps' % problem.run_episode(problem.new_params(), render=True))
+
     best = problem.learn(10)
 
     print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
