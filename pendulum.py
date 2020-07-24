@@ -17,12 +17,7 @@ class NefPendulum(NefGym):
 
     def __init__(self, neurons=20):
 
-        # Encoder
-        self.alpha = np.random.uniform(0, 100, neurons) # tuning parameter alpha
-        self.b = np.random.uniform(-20,+20, neurons)    # tuning parameter b
-        self.e = np.random.uniform(-1, +1, (3,neurons)) # encoder weights
-
-        self.neurons = neurons
+        NefGym.__init__(self, 3, neurons)
 
     def new_params(self):
 
