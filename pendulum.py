@@ -7,12 +7,13 @@ Copyright (C) 2020 Simon D. Levy
 MIT License
 '''
 
+from lib import NefGym
 import numpy as np
 import gym
 
 from sueap.elitist import Elitist
 
-class NefPendulum:
+class NefPendulum(NefGym):
 
     def __init__(self, neurons=20):
 
