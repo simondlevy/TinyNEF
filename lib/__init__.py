@@ -14,3 +14,18 @@ class NefGym:
     def new_params(self):
 
        return np.random.uniform(-1, +1, (self.neurons,1)) # decoder weights
+
+    def eval_params(self, params, episodes=10):
+
+        total_reward = 0
+        total_steps = 0
+
+        for _ in range(episodes):
+
+            episode_reward, episode_steps = self.run_episode(params)
+
+            total_reward += episode_reward
+            total_steps += episode_steps
+
+        return total_reward, total_steps
+

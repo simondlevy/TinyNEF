@@ -19,20 +19,6 @@ class NefCartPole(NefGym):
 
         NefGym.__init__(self, 4, neurons)
 
-    def eval_params(self, params, episodes=10):
-
-        total_reward = 0
-        total_steps = 0
-
-        for _ in range(episodes):
-
-            episode_reward, episode_steps = self.run_episode(params)
-
-            total_reward += episode_reward
-            total_steps += episode_steps
-
-        return total_reward, total_steps
-
 
     def mutate_params(self, params, noise_std):
 
