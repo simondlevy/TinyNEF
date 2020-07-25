@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     problem = NefCartPole()
 
-    ga = Elitist(problem, 2048)
+    ga = Elitist(problem, 2048, save_name='cartpole')
 
     best = ga.run(10, max_fitness=2000)
 

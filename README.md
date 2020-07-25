@@ -11,6 +11,6 @@ cd SUEAP/python
 sudo python3 setup.py install
 cd
 git clone https://github.com/simondlevy/TinyNEF
-cd TinyNEF
+cd TinyNEF/gym
 python3 cartpole.py
 ```
