@@ -14,17 +14,9 @@ from sueap.elitist import Elitist
 
 class NefPendulum(NefGym):
 
-    def __init__(self, neurons=20):
+    def __init__(self, neurons=20, seed=None):
 
-        NefGym.__init__(self, 'Pendulum-v0', 3, neurons)
-
-    def _get_action(self, params, obs):
-
-        a  = self._curve(obs)
-
-        d = params
-
-        return self.activate(np.dot(a, d))
+        NefGym.__init__(self, 'Pendulum-v0', neurons, seed)
 
     def activate(self, x):
 
