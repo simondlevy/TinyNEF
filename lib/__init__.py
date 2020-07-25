@@ -1,3 +1,4 @@
+import gym
 import numpy as np
 
 class NefGym:
@@ -35,6 +36,38 @@ class NefGym:
         d = params
 
         return d+noise_std*np.random.randn(*d.shape)
+
+    def run_episode(self, params, render=False):
+
+        # Build env
+        env = gym.make(self.env)
+        obs = env.reset()
+
+        episode_reward, episode_steps = 0,0
+
+        # Simulation loop
+        while True:
+
+            action = self._get_action(params, obs)
+
+            # Optional render of environment
+            if render:
+                env.render()
+
+            # Do environment step
+            obs, reward, done, _ = env.step(action)
+
+            episode_reward += reward
+            episode_steps += 1
+
+            # Episode end
+            if done:
+                break
+
+        # Cleanup
+        env.close()
+
+        return episode_reward, episode_steps
 
     def _curve(self, x):
 

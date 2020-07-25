@@ -9,7 +9,6 @@ MIT License
 
 from lib import NefGym
 import numpy as np
-import gym
 
 from sueap.elitist import Elitist
 
@@ -19,38 +18,6 @@ class NefCartPole(NefGym):
 
         NefGym.__init__(self, 'CartPole-v0', 4, neurons)
 
-
-    def run_episode(self, params, env='CartPole-v0', render=False):
-
-        # Build env
-        env = gym.make(env)
-        obs = env.reset()
-
-        episode_reward, episode_steps = 0,0
-
-        # Simulation loop
-        while True:
-
-            action = self._get_action(params, obs)
-
-            # Optional render of environment
-            if render:
-                env.render()
-
-            # Do environment step
-            obs, reward, done, _ = env.step(action)
-
-            episode_reward += reward
-            episode_steps += 1
-
-            # Episode end
-            if done:
-                break
-
-        # Cleanup
-        env.close()
-
-        return episode_reward, episode_steps
 
     def _get_action(self, params, obs):
 
