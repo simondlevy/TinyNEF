@@ -20,11 +20,7 @@ class NefPendulum(NefGym):
 
     def _get_action(self, params, obs):
 
-        a  = self._curve(obs)
-
-        d = params
-
-        return self.activate(np.dot(a, d))
+        return self.activate(np.dot(self._curve(obs), params))
 
     def activate(self, x):
 
