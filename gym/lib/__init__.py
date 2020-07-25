@@ -99,7 +99,7 @@ class NefGym:
         self.b = net[1]
         self.e = net[2]
 
-        return 0,0
+        return self.run_episode(net[3], render=True)
 
     def _get_action(self, params, obs):
 
