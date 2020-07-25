@@ -7,7 +7,7 @@ Copyright (C) 2020 Simon D. Levy
 MIT License
 '''
 
-from lib import NefGym, NefNet
+from lib import NefGym
 from sys import argv
 import pickle
 import numpy as np
@@ -32,6 +32,6 @@ if __name__ == '__main__':
         ga = Elitist(problem, 2048, save_name='cartpole')
         ga.run(10, max_fitness=2000)
     else:
-        net = NefNet(*pickle.load(open(argv[1], 'rb')))
-        #print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
+        net = pickle.load(open(argv[1], 'rb'))
+        print('Got reward %.3f in %d steps' % problem.test(net))
 
