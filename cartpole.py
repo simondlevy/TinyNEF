@@ -17,7 +17,7 @@ class NefCartPole(NefGym):
 
     def __init__(self, neurons=10):
 
-        NefGym.__init__(self, 4, neurons)
+        NefGym.__init__(self, 'CartPole-v0', 4, neurons)
 
 
     def run_episode(self, params, env='CartPole-v0', render=False):

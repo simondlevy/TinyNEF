@@ -17,7 +17,7 @@ class NefPendulum(NefGym):
 
     def __init__(self, neurons=20):
 
-        NefGym.__init__(self, 3, neurons)
+        NefGym.__init__(self, 'Pendulum-v0', 3, neurons)
 
     def run_episode(self, params, env='Pendulum-v0', render=False):
 
