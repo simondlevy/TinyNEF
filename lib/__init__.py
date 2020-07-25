@@ -35,6 +35,10 @@ class NefGym:
 
         return d+noise_std*np.random.randn(*d.shape)
 
+    def _curve(self, x):
+
+        return NefGym._G(self.alpha * np.dot(x, self.e) + self.b)
+
     @staticmethod
     def _G(v):
 

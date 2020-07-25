@@ -60,10 +60,6 @@ class NefCartPole(NefGym):
 
         return 1 if np.tanh(np.dot(a, d)) > 0 else 0
 
-    def _curve(self, x):
-
-        return NefGym._G(self.alpha * np.dot(x, self.e) + self.b)
-
 if __name__ == '__main__':
 
     problem = NefCartPole()

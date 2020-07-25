@@ -59,10 +59,6 @@ class NefPendulum(NefGym):
 
         return np.clip(np.dot(a, d), -2, +2)
 
-    def _curve(self, x):
-
-        return NefGym._G(self.alpha * np.dot(x, self.e) + self.b)
-
 if __name__ == '__main__':
 
     problem = NefPendulum()
