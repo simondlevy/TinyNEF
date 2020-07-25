@@ -18,14 +18,17 @@ class NefCartPole(NefGym):
 
         NefGym.__init__(self, 'CartPole-v0', 4, neurons)
 
-
     def _get_action(self, params, obs):
 
         a  = self._curve(obs)
 
         d = params
 
-        return 1 if np.tanh(np.dot(a, d)) > 0 else 0
+        return self.activate(np.dot(a, d))
+
+    def activate(self, x):
+
+        return 1 if np.tanh(x) > 0 else 0
 
 if __name__ == '__main__':
 

@@ -24,7 +24,11 @@ class NefPendulum(NefGym):
 
         d = params
 
-        return np.clip(np.dot(a, d), -2, +2)
+        return self.activate(np.dot(a, d))
+
+    def activate(self, x):
+
+        return np.clip(x, -2, +2)
 
 if __name__ == '__main__':
 
