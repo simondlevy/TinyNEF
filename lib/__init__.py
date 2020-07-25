@@ -15,7 +15,7 @@ class NefGym:
 
     def new_params(self):
 
-       return np.random.uniform(-1, +1, (self.neurons,1)) # decoder weights
+        return np.random.uniform(-1, +1, (self.neurons,1)) # decoder weights
 
     def eval_params(self, params, episodes=10):
 
@@ -41,6 +41,7 @@ class NefGym:
 
         # Build env
         env = gym.make(self.env)
+        env.seed(0)
         obs = env.reset()
 
         episode_reward, episode_steps = 0,0

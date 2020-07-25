@@ -32,11 +32,15 @@ class NefCartPole(NefGym):
 
 if __name__ == '__main__':
 
+    import random
+    random.seed(0)
+    np.random.seed(0)
+
     problem = NefCartPole()
 
     ga = Elitist(problem, 2048)
 
-    best = ga.run(10, max_fitness=2000)
+    best = ga.run(2, max_fitness=2000)
 
-    print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
+    #print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
 
