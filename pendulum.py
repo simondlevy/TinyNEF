@@ -18,10 +18,6 @@ class NefPendulum(NefGym):
 
         NefGym.__init__(self, 'Pendulum-v0', 3, neurons)
 
-    def _get_action(self, params, obs):
-
-        return self.activate(np.dot(self._curve(obs), params))
-
     def activate(self, x):
 
         return np.clip(x, -2, +2)

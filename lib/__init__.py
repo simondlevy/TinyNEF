@@ -72,6 +72,10 @@ class NefGym:
 
         return episode_reward, episode_steps
 
+    def _get_action(self, params, obs):
+
+        return self.activate(np.dot(self._curve(obs), params))
+
     def _curve(self, x):
 
         return NefGym._G(self.alpha * np.dot(x, self.e) + self.b)
