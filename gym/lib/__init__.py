@@ -9,6 +9,15 @@ MIT License
 import gym
 import numpy as np
 
+class NefNet:
+
+    def __init__(self, alpha, b, e, d):
+
+        self.alpha = alpha
+        self.b = b
+        self.e = e
+        self.d = d
+
 class NefGym:
 
     def __init__(self, env, neurons, seed):
