@@ -35,3 +35,14 @@ class NefGym:
 
         return d+noise_std*np.random.randn(*d.shape)
 
+    @staticmethod
+    def _G(v):
+
+        v[v<=0] = np.finfo(float).eps
+
+        g = 10 * np.log(np.abs(v))
+
+        g[g<0] = 0
+
+        return  g
+

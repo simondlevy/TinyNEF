@@ -61,18 +61,7 @@ class NefPendulum(NefGym):
 
     def _curve(self, x):
 
-        return NefPendulum._G(self.alpha * np.dot(x, self.e) + self.b)
-
-    @staticmethod
-    def _G(v):
-
-        v[v<=0] = np.finfo(float).eps
-
-        g = 10 * np.log(np.abs(v))
-
-        g[g<0] = 0
-
-        return  g
+        return NefGym._G(self.alpha * np.dot(x, self.e) + self.b)
 
 if __name__ == '__main__':
 
