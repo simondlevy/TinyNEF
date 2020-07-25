@@ -32,10 +32,6 @@ class NefCartPole(NefGym):
 
 if __name__ == '__main__':
 
-    import random
-    random.seed(0)
-    np.random.seed(0)
-
     problem = NefCartPole()
 
     ga = Elitist(problem, 2048)

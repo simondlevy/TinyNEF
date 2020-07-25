@@ -5,6 +5,8 @@ class NefGym:
 
     def __init__(self, env, obs_size, neurons):
 
+        np.random.seed(0)
+
         # Encoder
         self.alpha = np.random.uniform(0, 100, neurons) # tuning parameter alpha
         self.b = np.random.uniform(-20,+20, neurons)    # tuning parameter b
