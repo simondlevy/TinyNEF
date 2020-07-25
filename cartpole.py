@@ -30,5 +30,5 @@ if __name__ == '__main__':
 
     best = ga.run(10, max_fitness=2000)
 
-    print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
+    #print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
 
