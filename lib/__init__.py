@@ -1,3 +1,11 @@
+'''
+A superclass for working with OpenAI Gym environments using the Neural Engineering Framework
+
+Copyright (C) 2020 Simon D. Levy
+
+MIT License
+'''
+
 import gym
 import numpy as np
 
