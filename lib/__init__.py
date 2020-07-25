@@ -3,10 +3,14 @@ import numpy as np
 
 class NefGym:
 
-    def __init__(self, env, obs_size, neurons, seed):
+    def __init__(self, env, neurons, seed):
 
+        # Seed random-number generator if indicated
         if seed is not None:
             np.random.seed(seed)
+
+        # Get observation size from environment
+        obs_size = gym.make(env).observation_space.shape[0]
 
         # Encoder
         self.alpha = np.random.uniform(0, 100, neurons) # tuning parameter alpha

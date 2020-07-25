@@ -16,7 +16,7 @@ class NefCartPole(NefGym):
 
     def __init__(self, neurons=10, seed=None):
 
-        NefGym.__init__(self, 'CartPole-v0', 4, neurons, seed)
+        NefGym.__init__(self, 'CartPole-v0', neurons, seed)
 
     def activate(self, x):
 
@@ -24,11 +24,11 @@ class NefCartPole(NefGym):
 
 if __name__ == '__main__':
 
-    problem = NefCartPole(seed=0)
+    problem = NefCartPole()
 
     ga = Elitist(problem, 2048)
 
-    best = ga.run(2, max_fitness=2000)
+    best = ga.run(10, max_fitness=2000)
 
-    #print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
+    print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
 
