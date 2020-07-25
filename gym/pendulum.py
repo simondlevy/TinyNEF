@@ -8,6 +8,8 @@ MIT License
 '''
 
 from lib import NefGym
+from sys import argv
+import pickle
 import numpy as np
 
 from sueap.elitist import Elitist
@@ -26,9 +28,11 @@ if __name__ == '__main__':
 
     problem = NefPendulum()
 
-    ga = Elitist(problem, 2048, save_name='pendulum')
+    if len(argv) < 2:
+        ga = Elitist(problem, 2048, save_name='pendulum')
+        ga.run(80, max_fitness=-1500)
+    else:
+        net = pickle.load(open(argv[1], 'rb'))
+        print('Got reward %.3f in %d steps' % problem.test(net))
 
-    best = ga.run(80, max_fitness=-1500)
-
-    #print('Got reward %.3f in %d steps' % problem.run_episode(best, render=True))
 
