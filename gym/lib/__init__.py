@@ -95,6 +95,10 @@ class NefGym:
 
     def test(self, net):
 
+        self.alpha = net[0]
+        self.b = net[1]
+        self.e = net[2]
+
         return 0,0
 
     def _get_action(self, params, obs):
