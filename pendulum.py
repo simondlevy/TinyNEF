@@ -19,12 +19,6 @@ class NefPendulum(NefGym):
 
         NefGym.__init__(self, 3, neurons)
 
-    def mutate_params(self, params, noise_std):
-
-        d = params
-
-        return d+noise_std*np.random.randn(*d.shape)
-
     def run_episode(self, params, env='Pendulum-v0', render=False):
 
         # Build env

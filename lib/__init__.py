@@ -29,3 +29,9 @@ class NefGym:
 
         return total_reward, total_steps
 
+    def mutate_params(self, params, noise_std):
+
+        d = params
+
+        return d+noise_std*np.random.randn(*d.shape)
+

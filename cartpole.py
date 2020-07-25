@@ -20,12 +20,6 @@ class NefCartPole(NefGym):
         NefGym.__init__(self, 4, neurons)
 
 
-    def mutate_params(self, params, noise_std):
-
-        d = params
-
-        return d+noise_std*np.random.randn(*d.shape)
-
     def run_episode(self, params, env='CartPole-v0', render=False):
 
         # Build env
