@@ -3,15 +3,17 @@ import numpy as np
 
 class NefGym:
 
-    def __init__(self, env, obs_size, neurons):
+    def __init__(self, env, obs_size, neurons, seed):
 
-        np.random.seed(0)
+        if seed is not None:
+            np.random.seed(seed)
 
         # Encoder
         self.alpha = np.random.uniform(0, 100, neurons) # tuning parameter alpha
         self.b = np.random.uniform(-20,+20, neurons)    # tuning parameter b
         self.e = np.random.uniform(-1, +1, (obs_size,neurons)) # encoder weights
 
+        self.seed = seed
         self.env = env
         self.neurons = neurons
 
@@ -43,7 +45,10 @@ class NefGym:
 
         # Build env
         env = gym.make(self.env)
-        env.seed(0)
+
+        if self.seed is not None:
+            env.seed(self.seed)
+
         obs = env.reset()
 
         episode_reward, episode_steps = 0,0

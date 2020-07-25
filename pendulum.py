@@ -14,9 +14,9 @@ from sueap.elitist import Elitist
 
 class NefPendulum(NefGym):
 
-    def __init__(self, neurons=20):
+    def __init__(self, neurons=20, seed=None):
 
-        NefGym.__init__(self, 'Pendulum-v0', 3, neurons)
+        NefGym.__init__(self, 'Pendulum-v0', 3, neurons, seed)
 
     def activate(self, x):
 
@@ -24,7 +24,7 @@ class NefPendulum(NefGym):
 
 if __name__ == '__main__':
 
-    problem = NefPendulum()
+    problem = NefPendulum(seed=0)
 
     ga = Elitist(problem, 2048)
 

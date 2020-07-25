@@ -14,9 +14,9 @@ from sueap.elitist import Elitist
 
 class NefCartPole(NefGym):
 
-    def __init__(self, neurons=10):
+    def __init__(self, neurons=10, seed=None):
 
-        NefGym.__init__(self, 'CartPole-v0', 4, neurons)
+        NefGym.__init__(self, 'CartPole-v0', 4, neurons, seed)
 
     def activate(self, x):
 
@@ -24,7 +24,7 @@ class NefCartPole(NefGym):
 
 if __name__ == '__main__':
 
-    problem = NefCartPole()
+    problem = NefCartPole(seed=0)
 
     ga = Elitist(problem, 2048)
 
