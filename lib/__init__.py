@@ -53,6 +53,10 @@ class NefGym:
 
         return d+noise_std*np.random.randn(*d.shape)
 
+    def make_pickle(self, params):
+
+        return self.alpha, self.b,  self.e, params
+
     def run_episode(self, params, render=False):
 
         # Build env
