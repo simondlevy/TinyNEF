@@ -12,7 +12,7 @@ from sys import argv
 import pickle
 import numpy as np
 
-from sueap.elitist import Elitist
+from sueap.algorithms.elitist import Elitist
 
 class NefCartPole(NefGym):
 
