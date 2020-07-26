@@ -8,13 +8,13 @@ MIT License
 
 import gym
 import numpy as np
-from sueap.gym import GymProblem
+from sueap.gym import Problem
 
-class NefGym(GymProblem):
+class NefGym(Problem):
 
     def __init__(self, env, neurons, seed):
 
-        GymProblem.__init__(self, env, seed)
+        Problem.__init__(self, env, seed)
 
         # Encoder
         self.alpha = np.random.uniform(0, 100, neurons) # tuning parameter alpha
