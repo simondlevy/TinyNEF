@@ -53,13 +53,13 @@ class NefGym(Problem):
 
         return self.alpha, self.b,  self.e, params
 
-    def test(self, net):
+    def test(self, net, render=False):
 
         self.alpha = net[0]
         self.b = net[1]
         self.e = net[2]
 
-        return self.run_episode(net[3], render=True)
+        return self.run_episode(net[3], render=render)
 
     def get_action(self, params, obs):
 
